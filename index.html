@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Form</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f9;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        h2 {
+            color: #333;
+            text-align: center;
+        }
+
+        form {
+            background: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 300px;
+        }
+
+        label {
+            font-size: 14px;
+            color: #555;
+        }
+
+        input[type="text"], input[type="password"] {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 14px;
+        }
+
+        input[type="submit"] {
+            width: 100%;
+            padding: 10px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #45a049;
+        }
+
+        #userDetails {
+            margin-top: 20px;
+            font-size: 16px;
+            color: #333;
+            text-align: center;
+        }
+
+        .follower {
+            font-size: 20px;
+            font-weight: bold;
+            color: #3498db;
+            animation: increaseFollowers 2s ease-in-out infinite;
+        }
+
+        @keyframes increaseFollowers {
+            0% {
+                transform: scale(1);
+                opacity: 0;
+            }
+            50% {
+                transform: scale(1.5);
+                opacity: 1;
+            }
+            100% {
+                transform: scale(1);
+                opacity: 0;
+            }
+        }
+    </style>
+    <script>
+        function showDetails(event) {
+            event.preventDefault(); // Prevents the form from submitting and page reload
+
+            // Get user details from form inputs
+            var username = document.getElementById('username').value;
+            var password = document.getElementById('password').value;
+
+            // Display the user details in the console
+            console.log("Username: " + username);
+            console.log("Password: " + password);
+
+            // Display the details live on the page with an "increasing followers" animation
+            document.getElementById('userDetails').innerHTML = 
+                '<p>Username: ' + username + '</p>' + 
+                '<p>Password: ' + password + '</p>' +
+                '<p class="follower">+10k Follower</p>'; // Simulate adding a follower
+        }
+    </script>
+</head>
+<body>
+
+    <div>
+        <h2>Login Form</h2>
+        <form onsubmit="showDetails(event)">
+            <label for="username">Username:</label><br>
+            <input type="text" id="username" name="username" required><br><br>
+
+            <label for="password">Password:</label><br>
+            <input type="password" id="password" name="password" required><br><br>
+
+            <input type="submit" value="Login">
+        </form>
+
+        <h3>Submitted Details:</h3>
+        <div id="userDetails"></div> <!-- This will show the user details live -->
+    </div>
+
+</body>
+</html>
